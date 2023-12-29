@@ -29,6 +29,8 @@ export default {
   mounted: async function() {
 
     this.theUser = this.getUrl("userid");
+    let theUser = this.getUrl("userid");
+    console.log(this.theUser, theUser)
 
     try {
         this.loading = true

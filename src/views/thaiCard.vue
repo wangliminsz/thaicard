@@ -193,7 +193,7 @@ export default {
                 // let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + this.contact.fields.token
                 let the_token = this.contact.fields.token
                 console.log('token--------------------------->', the_token)
-                let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=daisy"
+                let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + the_token
 
                 // flex Json ----------------------------------------------
 

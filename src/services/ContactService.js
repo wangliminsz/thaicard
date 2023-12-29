@@ -12,7 +12,7 @@ export const ContactService = {
 
   async getCardSpec(contactId) {
 
-    let dataURL = `${this.serverAirURL}/card_info?filterByFormula=({id}=${contactId})`
+    let dataURL = `${this.serverAirURL}/card_info?filterByFormula=({token}=${contactId})`
 
     let headers = {
       'Content-Type': 'application/json', // Example header

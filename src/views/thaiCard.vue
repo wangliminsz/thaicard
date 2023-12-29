@@ -41,7 +41,7 @@ export default {
                 // console.log('view page-------->', response.data.records)
 
                 this.contact = response.data.records[0]
-                // console.log('this contact-------->', this.contact.fields)
+                console.log('this contact-------->', this.contact.fields)
 
                 // flex Json ----------------------------------------------
 
@@ -151,10 +151,10 @@ export default {
                 .init({ liffId: "2002510427-JDBgB1KQ" })
                 .then(() => {
                   if (!liff.isLoggedIn()) {
-                    // alert("用戶未登入 2023-12-28 - thai_card.vue");
+                    console.log("用戶未登入 2023-12-28 - thai_card.vue");
                     liff.login();
                   } else {
-                    // alert("用戶已经登入 2023-12-28 - thai_card.vue");
+                    console.log("用戶已经登入 2023-12-28 - thai_card.vue");
                     const myLink = liff.permanentLink.createUrl();
                     console.log(
                       "2023-12-28 - thai_card.vue -liff.permanentLink.createUrl",

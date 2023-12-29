@@ -35,8 +35,8 @@ export default {
     try {
         this.loading = true
 
-        let response = ContactService.getCardSpec(this.theUser).then(() => {
-            // let response = await ContactService.getCardSpec(this.theUser)
+        // let response = ContactService.getCardSpec(this.theUser).then(() => {
+            let response = await ContactService.getCardSpec(this.theUser)
             if (response) {
                 // console.log('view page-------->', response.data.records)
 
@@ -171,7 +171,7 @@ export default {
                   console.log("Init Failed", err);
                 });
             }   
-        })     
+        // })     
     }
     catch (error) {
         this.errorMessage = error

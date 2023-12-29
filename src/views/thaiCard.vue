@@ -32,141 +32,144 @@ export default {
 
     try {
         this.loading = true
-        let response = await ContactService.getCardSpec(this.theUser)
-        if (response) {
-            // console.log('view page-------->', response.data.records)
 
-            this.contact = response.data.records[0]
-            // console.log('this contact-------->', this.contact.fields)
+        let response = ContactService.getCardSpec(this.theUser).then(() => {
+            // let response = await ContactService.getCardSpec(this.theUser)
+            if (response) {
+                // console.log('view page-------->', response.data.records)
 
-            // flex Json ----------------------------------------------
+                this.contact = response.data.records[0]
+                // console.log('this contact-------->', this.contact.fields)
 
-            let the_text = this.contact.fields.name.replace(/\s+/g, '');
-            let the_tel = this.contact.fields.tel
-            let the_label = this.contact.fields.tel_label
-            let the_img_2013 = this.contact.fields.img
-            let the_line_id = this.contact.fields.line_id
-            // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
-            let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=4"
+                // flex Json ----------------------------------------------
 
-            // flex Json ----------------------------------------------
+                let the_text = this.contact.fields.name.replace(/\s+/g, '');
+                let the_tel = this.contact.fields.tel
+                let the_label = this.contact.fields.tel_label
+                let the_img_2013 = this.contact.fields.img
+                let the_line_id = this.contact.fields.line_id
+                // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
+                let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=4"
 
-            const flexJson = {
-              type: "bubble",
-              size: "kilo",
-              hero: {
-                type: "image",
-                size: "full",
-                aspectRatio: "20:13",
-                aspectMode: "cover",
-                url: the_img_2013,
-              },
-              body: {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "text",
-                    text: the_text,
-                    wrap: true,
-                    weight: "bold",
-                    size: "lg",
-                    style: "normal",
+                // flex Json ----------------------------------------------
+
+                const flexJson = {
+                  type: "bubble",
+                  size: "kilo",
+                  hero: {
+                    type: "image",
+                    size: "full",
+                    aspectRatio: "20:13",
+                    aspectMode: "cover",
+                    url: the_img_2013,
                   },
-                  {
-                    type: "text",
-                    text: "Ant Global Property",
-                    size: "sm",
+                  body: {
+                    type: "box",
+                    layout: "vertical",
+                    spacing: "sm",
+                    contents: [
+                      {
+                        type: "text",
+                        text: the_text,
+                        wrap: true,
+                        weight: "bold",
+                        size: "lg",
+                        style: "normal",
+                      },
+                      {
+                        type: "text",
+                        text: "Ant Global Property",
+                        size: "sm",
+                      },
+
+                      {
+                        type: "text",
+                        text: "Thai Real Estate - Buy / Sale / Rent",
+                        wrap: true,
+                        size: "sm",
+                      },
+
+                      {
+                        type: "button",
+                        style: "link",
+                        height: "sm",
+                        action: {
+                          type: "uri",
+                          label: the_label,
+                          uri: the_tel,
+                        },
+                      },
+                    ],
                   },
+                  footer: {
+                    type: "box",
+                    layout: "vertical",
+                    spacing: "sm",
+                    contents: [
+                      {
+                        type: "button",
+                        style: "primary",
+                        action: {
+                          type: "uri",
+                          label: "Line ID",
+                          uri: the_line_id,
+                        },
+                        height: "sm",
+                      },
 
-                  {
-                    type: "text",
-                    text: "Thai Real Estate - Buy / Sale / Rent",
-                    wrap: true,
-                    size: "sm",
+                      {
+                        type: "button",
+                        style: "primary",
+                        action: {
+                          type: "uri",
+                          label: "Share",
+                          uri: the_share_url,
+                        },
+                        color: "#1B74E4",
+                        height: "sm",
+                        margin: "lg",
+                      },
+
+                    ],
                   },
+                };
 
-                  {
-                    type: "button",
-                    style: "link",
-                    height: "sm",
-                    action: {
-                      type: "uri",
-                      label: the_label,
-                      uri: the_tel,
-                    },
-                  },
-                ],
-              },
-              footer: {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "button",
-                    style: "primary",
-                    action: {
-                      type: "uri",
-                      label: "Line ID",
-                      uri: the_line_id,
-                    },
-                    height: "sm",
-                  },
+                this.flexJson = flexJson
+                // console.log(this.flexJson, '<<<<<<<<<<<<<<<<<<<<------------')
 
-                  {
-                    type: "button",
-                    style: "primary",
-                    action: {
-                      type: "uri",
-                      label: "Share",
-                      uri: the_share_url,
-                    },
-                    color: "#1B74E4",
-                    height: "sm",
-                    margin: "lg",
-                  },
+                // flex Json ----------------------------------------------
+                  
+                this.loading = false
+            
+      
+              // `````````````````````````````    
+              // this.theUser = this.getUrl("userid");
 
-                ],
-              },
-            };
+              liff
+                .init({ liffId: "2002510427-JDBgB1KQ" })
+                .then(() => {
+                  if (!liff.isLoggedIn()) {
+                    // alert("用戶未登入 2023-12-28 - thai_card.vue");
+                    liff.login();
+                  } else {
+                    // alert("用戶已经登入 2023-12-28 - thai_card.vue");
+                    const myLink = liff.permanentLink.createUrl();
+                    console.log(
+                      "2023-12-28 - thai_card.vue -liff.permanentLink.createUrl",
+                      myLink
+                    );
+                    console.log(
+                      this.theUser, "2023-12-28 - user"
+                    );
 
-            this.flexJson = flexJson
-            // console.log(this.flexJson, '<<<<<<<<<<<<<<<<<<<<------------')
-
-            // flex Json ----------------------------------------------
-              
-            this.loading = false
-        
-   
-          // `````````````````````````````    
-          // this.theUser = this.getUrl("userid");
-
-          liff
-            .init({ liffId: "2002510427-JDBgB1KQ" })
-            .then(() => {
-              if (!liff.isLoggedIn()) {
-                // alert("用戶未登入 2023-12-28 - thai_card.vue");
-                liff.login();
-              } else {
-                // alert("用戶已经登入 2023-12-28 - thai_card.vue");
-                const myLink = liff.permanentLink.createUrl();
-                console.log(
-                  "2023-12-28 - thai_card.vue -liff.permanentLink.createUrl",
-                  myLink
-                );
-                console.log(
-                  this.theUser, "2023-12-28 - user"
-                );
-
-                this.sendD(flexJson, the_text)
-              }
-            })
-            .catch((err) => {
-              console.log("Init Failed", err);
-            });
-        }    
+                    this.sendD(flexJson, the_text)
+                  }
+                })
+                .catch((err) => {
+                  console.log("Init Failed", err);
+                });
+            }   
+        })     
     }
     catch (error) {
         this.errorMessage = error

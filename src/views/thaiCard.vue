@@ -177,7 +177,10 @@ export default {
 
               // ------------------------------
 
-              ContactService.getCardSpec(this.theUser).then(() => {
+              ContactService.getCardSpec(this.theUser).then((res) => {
+
+                console.log(res, '---res')
+                this.contact = res.data.records[0]
 
                 // flex Json ----------------------------------------------
 

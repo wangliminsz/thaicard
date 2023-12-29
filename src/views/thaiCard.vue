@@ -191,6 +191,8 @@ export default {
                 let the_line_id = this.contact.fields.line_id
                 // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
                 // let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + this.contact.fields.token
+                let the_token = this.contact.fields.token
+                console.log('token--------------------------->', the_token)
                 let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=daisy"
 
                 // flex Json ----------------------------------------------

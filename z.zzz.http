@@ -1,0 +1,8 @@
+###
+
+GET https://api.airtable.com/v0/appXdwGBmnwwvQ8SD/card_info?filterByFormula={token}=daisy
+Authorization: Bearer {{air_token}}
+
+###
+
+@air_token = patqeUrC7eLbBBjx5.3fa0ab9407f2512416c9ae44562fa2a83c5c4231022022c745b418e940e79667

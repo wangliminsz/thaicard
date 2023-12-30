@@ -302,6 +302,7 @@ export default {
 
               // const flexMessages = [flexJson0, flexJson1, /* ... */];
 
+              
               // Create the carousel message format
               const flexJson = {
                 type: "carousel",

@@ -285,6 +285,7 @@ export default {
       let theName = theText + "'s Name Card"
 
       let theFlexJson = flexJson
+      console.log('why flexJson not change --->', theFlexJson)
 
       liff
         .shareTargetPicker([

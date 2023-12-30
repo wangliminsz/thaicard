@@ -8,7 +8,7 @@ import liff from "@line/liff";
 import { ContactService } from '@/services/ContactService'
 
 export default {
-  
+
   data() {
     return {
       // 版本号
@@ -26,7 +26,7 @@ export default {
     };
   },
 
-  created: async function() {
+  created: async function () {
 
     this.theUser = this.getUrl("userid");
     let theUser = this.getUrl("userid");
@@ -140,7 +140,7 @@ export default {
     //             // console.log(this.flexJson, '<<<<<<<<<<<<<<<<<<<<------------')
 
     //             // flex Json ----------------------------------------------
-                  
+
     //             this.loading = false
 
     //         }   
@@ -151,135 +151,216 @@ export default {
     //     this.loading = false
     // } 
 
-  },  
+  },
 
-  mounted: async function() {
+  mounted: async function () {
 
     try {
-        this.loading = true
+      this.loading = true
 
-        liff
-          .init({ liffId: "2002510427-JDBgB1KQ" })
-          .then(() => {
-            if (!liff.isLoggedIn()) {
-              console.log("用戶未登入 2023-12-28 - thai_card.vue");
-              liff.login();
-            } else {
-              console.log("用戶已经登入 2023-12-28 - thai_card.vue");
-              const myLink = liff.permanentLink.createUrl();
-              console.log(
-                "2023-12-28 - thai_card.vue -liff.permanentLink.createUrl",
-                myLink
-              );
-              console.log(
-                this.theUser, "2023-12-28 - user <<<--- user"
-              );
+      liff
+        .init({ liffId: "2002510427-JDBgB1KQ" })
+        .then(() => {
+          if (!liff.isLoggedIn()) {
+            console.log("用戶未登入 2023-12-28 - thai_card.vue");
+            liff.login();
+          } else {
+            console.log("用戶已经登入 2023-12-28 - thai_card.vue");
+            const myLink = liff.permanentLink.createUrl();
+            console.log(
+              "2023-12-28 - thai_card.vue -liff.permanentLink.createUrl",
+              myLink
+            );
+            console.log(
+              this.theUser, "2023-12-28 - user <<<--- user"
+            );
+
+            // ------------------------------
+
+            ContactService.getCardSpec(this.theUser).then((res) => {
+
+              console.log(res, '---res')
+              this.contact = res.data.records[0]
+
+              // flex Json ----------------------------------------------
+
+              // let the_text = this.contact.fields.name.replace(/\s+/g, '');
+              // .trimEnd();
+              let the_text = this.contact.fields.name
+              let the_phone = this.contact.fields.phone
+              // let the_tel = this.contact.fields.tel
+              // let the_label = this.contact.fields.tel_label
+              let the_tel = 'tel:' + the_phone
+              let the_label = 'Tel: ' + the_phone
+              let the_img_2013 = this.contact.fields.img
+              let the_line_id = this.contact.fields.line_id
+              let the_biz_name = this.contact.fields.biz_name
+              let the_biz_intro = this.contact.fields.biz_intro
+              console.log('vercel Err 1-->', the_tel, the_label, the_img_2013, the_line_id, the_biz_name, the_biz_intro)
+              // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
+              // let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + this.contact.fields.token
+              let the_token = this.contact.fields.token
+              console.log('token--------------------------->', the_token)
+              let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + the_token
+              console.log('vercel Err 2-->', the_share_url)
+
+              // flex Json ----------------------------------------------
+
+              const flexJson = {
+                "type": "carousel",
+                "contents": [
+                  {
+                    "type": "bubble",
+                    "size": "kilo",
+                    "hero": {
+                      "type": "image",
+                      "size": "full",
+                      "aspectRatio": "20:13",
+                      "aspectMode": "cover",
+                      "url": "the_img_2013"
+                    },
+                    "body": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "sm",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "the_text",
+                          "wrap": true,
+                          "weight": "bold",
+                          "size": "lg",
+                          "style": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "text": "the_biz_name",
+                          "size": "sm"
+                        },
+                        {
+                          "type": "text",
+                          "text": "the_biz_intro",
+                          "wrap": true,
+                          "size": "sm"
+                        },
+                        {
+                          "type": "button",
+                          "style": "link",
+                          "height": "sm",
+                          "action": {
+                            "type": "uri",
+                            "label": "the_label",
+                            "uri": "the_tel"
+                          }
+                        }
+                      ]
+                    },
+                    "footer": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "sm",
+                      "contents": [
+                        {
+                          "type": "button",
+                          "style": "primary",
+                          "action": {
+                            "type": "uri",
+                            "label": "Line ID",
+                            "uri": "the_line_id"
+                          },
+                          "height": "sm"
+                        },
+                        {
+                          "type": "button",
+                          "style": "primary",
+                          "action": {
+                            "type": "uri",
+                            "label": "Share",
+                            "uri": "the_share_url"
+                          },
+                          "color": "#1B74E4",
+                          "height": "sm",
+                          "margin": "lg"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "bubble",
+                    "size": "kilo",
+                    "hero": {
+                      "type": "image",
+                      "url": "https://i.imgur.com/MDfGTNJ.jpg",
+                      "size": "full",
+                      "aspectRatio": "20:13",
+                      "aspectMode": "cover",
+                      "action": {
+                        "type": "uri",
+                        "uri": "http://linecorp.com/"
+                      }
+                    },
+                    "body": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "九月九日忆山东兄弟",
+                          "weight": "bold",
+                          "align": "center"
+                        },
+                        {
+                          "type": "text",
+                          "text": "王维",
+                          "align": "center",
+                          "color": "#c0c0c0"
+                        },
+                        {
+                          "type": "text",
+                          "text": "独在异乡为异客，",
+                          "style": "normal",
+                          "align": "center"
+                        },
+                        {
+                          "type": "text",
+                          "text": "每逢佳节倍思亲。",
+                          "align": "center"
+                        },
+                        {
+                          "type": "text",
+                          "text": "遥知兄弟登高处，",
+                          "align": "center"
+                        },
+                        {
+                          "type": "text",
+                          "text": "遍插茱萸少一人。",
+                          "align": "center"
+                        }
+                      ],
+                      "justifyContent": "center",
+                      "spacing": "lg"
+                    }
+                  }
+                ]
+              }
+
+              console.log('why flexJson not change 1--->', flexJson)
 
               // ------------------------------
 
-              ContactService.getCardSpec(this.theUser).then((res) => {
+              this.sendD(flexJson, the_text)
+            })
 
-                console.log(res, '---res')
-                this.contact = res.data.records[0]
-
-                // flex Json ----------------------------------------------
-
-                // let the_text = this.contact.fields.name.replace(/\s+/g, '');
-                // .trimEnd();
-                let the_text = this.contact.fields.name
-                let the_phone = this.contact.fields.phone
-                // let the_tel = this.contact.fields.tel
-                // let the_label = this.contact.fields.tel_label
-                let the_tel = 'tel:'+ the_phone
-                let the_label = 'Tel: '+ the_phone
-                let the_img_2013 = this.contact.fields.img
-                let the_line_id = this.contact.fields.line_id
-                let the_biz_name = this.contact.fields.biz_name
-                let the_biz_intro = this.contact.fields.biz_intro
-                console.log('vercel Err 1-->', the_tel, the_label, the_img_2013, the_line_id,the_biz_name,the_biz_intro)
-                // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
-                // let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + this.contact.fields.token
-                let the_token = this.contact.fields.token
-                console.log('token--------------------------->', the_token)
-                let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + the_token
-                console.log('vercel Err 2-->', the_share_url)
-                
-                // flex Json ----------------------------------------------
-
-                const flexJson = {
-                  "type": "bubble",
-                  "size": "kilo",
-                  "hero": {
-                    "type": "image",
-                    "url": "https://i.imgur.com/MDfGTNJ.jpg",
-                    "size": "full",
-                    "aspectRatio": "20:13",
-                    "aspectMode": "cover",
-                    "action": {
-                      "type": "uri",
-                      "uri": "http://linecorp.com/"
-                    }
-                  },
-                  "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "九月九日忆山东兄弟",
-                        "weight": "bold",
-                        "align": "center"
-                      },
-                      {
-                        "type": "text",
-                        "text": "王维",
-                        "align": "center",
-                        "color": "#c0c0c0"
-                      },
-                      {
-                        "type": "text",
-                        "text": "独在异乡为异客，",
-                        "style": "normal",
-                        "align": "center"
-                      },
-                      {
-                        "type": "text",
-                        "text": "每逢佳节倍思亲。",
-                        "align": "center"
-                      },
-                      {
-                        "type": "text",
-                        "text": "遥知兄弟登高处，",
-                        "align": "center"
-                      },
-                      {
-                        "type": "text",
-                        "text": "遍插茱萸少一人。",
-                        "align": "center"
-                      }
-                    ],
-                    "justifyContent": "center",
-                    "spacing": "lg"
-                  }
-                }
-
-                console.log('why flexJson not change 1--->', flexJson)
-
-                // ------------------------------
-
-                this.sendD(flexJson, the_text)
-              })
-
-            }
-          })
-          .catch((err) => {
-            console.log("Init Failed", err);
-          });
+          }
+        })
+        .catch((err) => {
+          console.log("Init Failed", err);
+        });
     }
     catch (error) {
-        this.errorMessage = error
-        this.loading = false
-    }      
+      this.errorMessage = error
+      this.loading = false
+    }
   },
 
   methods: {
@@ -314,7 +395,7 @@ export default {
         .catch(function (error) {
           console.log("something wrong happen", error);
         });
-      
+
     },
 
     getUrl(args) {
@@ -343,5 +424,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

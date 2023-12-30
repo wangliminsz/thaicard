@@ -293,7 +293,7 @@ export default {
               // Check if flexJson1 is available and add it to flexMessages
               if (this.contact.fields.flexJson1) {
                 let flexJson1 = this.contact.fields.flexJson1
-                flexMessages.push(flexJson1);
+                flexMessages.push(flexJson0);
               }
 
               // const flexMessages = [flexJson0, flexJson1, /* ... */];

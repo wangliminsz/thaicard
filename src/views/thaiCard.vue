@@ -300,9 +300,33 @@ export default {
                 flexMessages.push(flexJson1);
               }
 
+              if (this.contact.fields.flexJson2) {
+                let flexJson2_str = this.contact.fields.flexJson2
+                const flexJson2 = JSON.parse(flexJson2_str);
+                flexMessages.push(flexJson2);
+              }
+
+              if (this.contact.fields.flexJson3) {
+                let flexJson3_str = this.contact.fields.flexJson3
+                const flexJson3 = JSON.parse(flexJson3_str);
+                flexMessages.push(flexJson3);
+              }
+
+              if (this.contact.fields.flexJson4) {
+                let flexJson4_str = this.contact.fields.flexJson4
+                const flexJson4 = JSON.parse(flexJson4_str);
+                flexMessages.push(flexJson4);
+              }
+
+              if (this.contact.fields.flexJson5) {
+                let flexJson5_str = this.contact.fields.flexJson5
+                const flexJson5 = JSON.parse(flexJson5_str);
+                flexMessages.push(flexJson5);
+              }
+
               // const flexMessages = [flexJson0, flexJson1, /* ... */];
 
-              
+
               // Create the carousel message format
               const flexJson = {
                 type: "carousel",

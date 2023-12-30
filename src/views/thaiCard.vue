@@ -185,8 +185,11 @@ export default {
                 // flex Json ----------------------------------------------
 
                 let the_text = this.contact.fields.name.replace(/\s+/g, '');
-                let the_tel = this.contact.fields.tel
-                let the_label = this.contact.fields.tel_label
+                let the_phone = this.contact.fields.phone
+                // let the_tel = this.contact.fields.tel
+                // let the_label = this.contact.fields.tel_label
+                let the_tel = 'tel:'+ the_phone
+                let the_label = 'Tel: '+ the_phone
                 let the_img_2013 = this.contact.fields.img
                 let the_line_id = this.contact.fields.line_id
                 let the_biz_name = this.contact.fields.biz_name

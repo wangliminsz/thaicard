@@ -189,6 +189,8 @@ export default {
                 let the_label = this.contact.fields.tel_label
                 let the_img_2013 = this.contact.fields.img
                 let the_line_id = this.contact.fields.line_id
+                let the_biz_name = this.contact.fields.biz_name
+                let the_biz_intro = this.contact.fields.biz_intro
                 // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
                 // let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + this.contact.fields.token
                 let the_token = this.contact.fields.token
@@ -222,13 +224,13 @@ export default {
                       },
                       {
                         type: "text",
-                        text: "Ant Global Property",
+                        text: the_biz_name,
                         size: "sm",
                       },
 
                       {
                         type: "text",
-                        text: "Thai Real Estate - Buy / Sale / Rent",
+                        text: the_biz_intro,
                         wrap: true,
                         size: "sm",
                       },

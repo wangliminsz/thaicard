@@ -196,6 +196,7 @@ export default {
                 let the_line_id = this.contact.fields.line_id
                 let the_biz_name = this.contact.fields.biz_name
                 let the_biz_intro = this.contact.fields.biz_intro
+                console.log('vercel Err-->', the_tel, the_label, the_img_2013, the_line_id,the_biz_name,the_biz_desc)
                 // let the_share_url = "https://1b0a-27-189-213-239.ngrok-free.app/?userid=" + this.contact.fields.id
                 // let the_share_url = "https://liff.line.me/2002510427-JDBgB1KQ/?userid=" + this.contact.fields.token
                 let the_token = this.contact.fields.token

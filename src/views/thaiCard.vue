@@ -284,62 +284,6 @@ export default {
                         }
                       ]
                     }
-                  },
-                  {
-                    "type": "bubble",
-                    "size": "kilo",
-                    "hero": {
-                      "type": "image",
-                      "url": "https://i.imgur.com/MDfGTNJ.jpg",
-                      "size": "full",
-                      "aspectRatio": "20:13",
-                      "aspectMode": "cover",
-                      "action": {
-                        "type": "uri",
-                        "uri": "http://linecorp.com/"
-                      }
-                    },
-                    "body": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "九月九日忆山东兄弟",
-                          "weight": "bold",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "王维",
-                          "align": "center",
-                          "color": "#c0c0c0"
-                        },
-                        {
-                          "type": "text",
-                          "text": "独在异乡为异客，",
-                          "style": "normal",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "每逢佳节倍思亲。",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "遥知兄弟登高处，",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "遍插茱萸少一人。",
-                          "align": "center"
-                        }
-                      ],
-                      "justifyContent": "center",
-                      "spacing": "lg"
-                    }
                   }
                 ]
               }

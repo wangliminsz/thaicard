@@ -207,169 +207,96 @@ export default {
               // flex Json ----------------------------------------------
 
               // Store the individual Flex Messages in an array
-              const flexJson1 = {
-                    type: "bubble",
-                    size: "kilo",
-                    hero: {
-                      type: "image",
-                      size: "full",
-                      aspectRatio: "20:13",
-                      aspectMode: "cover",
-                      url: the_img_2013,
+              const flexJson0 = {
+                type: "bubble",
+                size: "kilo",
+                hero: {
+                  type: "image",
+                  size: "full",
+                  aspectRatio: "20:13",
+                  aspectMode: "cover",
+                  url: the_img_2013,
+                },
+                body: {
+                  type: "box",
+                  layout: "vertical",
+                  spacing: "sm",
+                  contents: [
+                    {
+                      type: "text",
+                      text: the_text,
+                      wrap: true,
+                      weight: "bold",
+                      size: "lg",
+                      style: "normal",
                     },
-                    body: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "text",
-                          text: the_text,
-                          wrap: true,
-                          weight: "bold",
-                          size: "lg",
-                          style: "normal",
-                        },
-                        {
-                          type: "text",
-                          text: the_biz_name,
-                          size: "sm",
-                        },
-
-                        {
-                          type: "text",
-                          text: the_biz_intro,
-                          wrap: true,
-                          size: "sm",
-                        },
-
-                        {
-                          type: "button",
-                          style: "link",
-                          height: "sm",
-                          action: {
-                            type: "uri",
-                            label: the_label,
-                            uri: the_tel,
-                          },
-                        },
-                      ],
+                    {
+                      type: "text",
+                      text: the_biz_name,
+                      size: "sm",
                     },
-                    footer: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Line ID",
-                            uri: the_line_id,
-                          },
-                          height: "sm",
-                        },
 
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Share",
-                            uri: the_share_url,
-                          },
-                          color: "#1B74E4",
-                          height: "sm",
-                          margin: "lg",
-                        },
-
-                      ],
+                    {
+                      type: "text",
+                      text: the_biz_intro,
+                      wrap: true,
+                      size: "sm",
                     },
+
+                    {
+                      type: "button",
+                      style: "link",
+                      height: "sm",
+                      action: {
+                        type: "uri",
+                        label: the_label,
+                        uri: the_tel,
+                      },
+                    },
+                  ],
+                },
+                footer: {
+                  type: "box",
+                  layout: "vertical",
+                  spacing: "sm",
+                  contents: [
+                    {
+                      type: "button",
+                      style: "primary",
+                      action: {
+                        type: "uri",
+                        label: "Line ID",
+                        uri: the_line_id,
+                      },
+                      height: "sm",
+                    },
+
+                    {
+                      type: "button",
+                      style: "primary",
+                      action: {
+                        type: "uri",
+                        label: "Share",
+                        uri: the_share_url,
+                      },
+                      color: "#1B74E4",
+                      height: "sm",
+                      margin: "lg",
+                    },
+
+                  ],
+                },
               };
 
-              const flexJson2 = {
-                    type: "bubble",
-                    size: "kilo",
-                    hero: {
-                      type: "image",
-                      size: "full",
-                      aspectRatio: "20:13",
-                      aspectMode: "cover",
-                      url: the_img_2013,
-                    },
-                    body: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "text",
-                          text: the_text,
-                          wrap: true,
-                          weight: "bold",
-                          size: "lg",
-                          style: "normal",
-                        },
-                        {
-                          type: "text",
-                          text: the_biz_name,
-                          size: "sm",
-                        },
+              let flexMessages = [flexJson0]; // Start with flexJson0
 
-                        {
-                          type: "text",
-                          text: the_biz_intro,
-                          wrap: true,
-                          size: "sm",
-                        },
+              // Check if flexJson1 is available and add it to flexMessages
+              if (this.contact.fields.flexJson1) {
+                let flexJson1 = this.contact.fields.flexJson1
+                flexMessages.push(flexJson1);
+              }
 
-                        {
-                          type: "button",
-                          style: "link",
-                          height: "sm",
-                          action: {
-                            type: "uri",
-                            label: the_label,
-                            uri: the_tel,
-                          },
-                        },
-                      ],
-                    },
-                    footer: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Line ID",
-                            uri: the_line_id,
-                          },
-                          height: "sm",
-                        },
-
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Share",
-                            uri: the_share_url,
-                          },
-                          color: "#1B74E4",
-                          height: "sm",
-                          margin: "lg",
-                        },
-
-                      ],
-                    },
-              };
-
-              const flexMessages = [flexJson1, flexJson2, /* ... */];
+              // const flexMessages = [flexJson0, flexJson1, /* ... */];
 
               // Create the carousel message format
               const flexJson = {

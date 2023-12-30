@@ -299,6 +299,7 @@ export default {
         ])
         .then(function (res) {
           if (res) {
+            console.log(`[${res.status}]`, theFlexJson);
             console.log(`[${res.status}] Message sent!`);
           } else {
             console.log(

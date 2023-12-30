@@ -206,227 +206,176 @@ export default {
 
               // flex Json ----------------------------------------------
 
+              // Store the individual Flex Messages in an array
+              const flexJson1 = {
+                    type: "bubble",
+                    size: "kilo",
+                    hero: {
+                      type: "image",
+                      size: "full",
+                      aspectRatio: "20:13",
+                      aspectMode: "cover",
+                      url: the_img_2013,
+                    },
+                    body: {
+                      type: "box",
+                      layout: "vertical",
+                      spacing: "sm",
+                      contents: [
+                        {
+                          type: "text",
+                          text: the_text,
+                          wrap: true,
+                          weight: "bold",
+                          size: "lg",
+                          style: "normal",
+                        },
+                        {
+                          type: "text",
+                          text: the_biz_name,
+                          size: "sm",
+                        },
+
+                        {
+                          type: "text",
+                          text: the_biz_intro,
+                          wrap: true,
+                          size: "sm",
+                        },
+
+                        {
+                          type: "button",
+                          style: "link",
+                          height: "sm",
+                          action: {
+                            type: "uri",
+                            label: the_label,
+                            uri: the_tel,
+                          },
+                        },
+                      ],
+                    },
+                    footer: {
+                      type: "box",
+                      layout: "vertical",
+                      spacing: "sm",
+                      contents: [
+                        {
+                          type: "button",
+                          style: "primary",
+                          action: {
+                            type: "uri",
+                            label: "Line ID",
+                            uri: the_line_id,
+                          },
+                          height: "sm",
+                        },
+
+                        {
+                          type: "button",
+                          style: "primary",
+                          action: {
+                            type: "uri",
+                            label: "Share",
+                            uri: the_share_url,
+                          },
+                          color: "#1B74E4",
+                          height: "sm",
+                          margin: "lg",
+                        },
+
+                      ],
+                    },
+              };
+
+              const flexJson2 = {
+                    type: "bubble",
+                    size: "kilo",
+                    hero: {
+                      type: "image",
+                      size: "full",
+                      aspectRatio: "20:13",
+                      aspectMode: "cover",
+                      url: the_img_2013,
+                    },
+                    body: {
+                      type: "box",
+                      layout: "vertical",
+                      spacing: "sm",
+                      contents: [
+                        {
+                          type: "text",
+                          text: the_text,
+                          wrap: true,
+                          weight: "bold",
+                          size: "lg",
+                          style: "normal",
+                        },
+                        {
+                          type: "text",
+                          text: the_biz_name,
+                          size: "sm",
+                        },
+
+                        {
+                          type: "text",
+                          text: the_biz_intro,
+                          wrap: true,
+                          size: "sm",
+                        },
+
+                        {
+                          type: "button",
+                          style: "link",
+                          height: "sm",
+                          action: {
+                            type: "uri",
+                            label: the_label,
+                            uri: the_tel,
+                          },
+                        },
+                      ],
+                    },
+                    footer: {
+                      type: "box",
+                      layout: "vertical",
+                      spacing: "sm",
+                      contents: [
+                        {
+                          type: "button",
+                          style: "primary",
+                          action: {
+                            type: "uri",
+                            label: "Line ID",
+                            uri: the_line_id,
+                          },
+                          height: "sm",
+                        },
+
+                        {
+                          type: "button",
+                          style: "primary",
+                          action: {
+                            type: "uri",
+                            label: "Share",
+                            uri: the_share_url,
+                          },
+                          color: "#1B74E4",
+                          height: "sm",
+                          margin: "lg",
+                        },
+
+                      ],
+                    },
+              };
+
+              const flexMessages = [flexJson1, flexJson2, /* ... */];
+
+              // Create the carousel message format
               const flexJson = {
-                "type": "carousel",
-                "contents": [
-                  {
-                    type: "bubble",
-                    size: "kilo",
-                    hero: {
-                      type: "image",
-                      size: "full",
-                      aspectRatio: "20:13",
-                      aspectMode: "cover",
-                      url: the_img_2013,
-                    },
-                    body: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "text",
-                          text: the_text,
-                          wrap: true,
-                          weight: "bold",
-                          size: "lg",
-                          style: "normal",
-                        },
-                        {
-                          type: "text",
-                          text: the_biz_name,
-                          size: "sm",
-                        },
-
-                        {
-                          type: "text",
-                          text: the_biz_intro,
-                          wrap: true,
-                          size: "sm",
-                        },
-
-                        {
-                          type: "button",
-                          style: "link",
-                          height: "sm",
-                          action: {
-                            type: "uri",
-                            label: the_label,
-                            uri: the_tel,
-                          },
-                        },
-                      ],
-                    },
-                    footer: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Line ID",
-                            uri: the_line_id,
-                          },
-                          height: "sm",
-                        },
-
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Share",
-                            uri: the_share_url,
-                          },
-                          color: "#1B74E4",
-                          height: "sm",
-                          margin: "lg",
-                        },
-
-                      ],
-                    },
-                  },
-                  {
-                    "type": "bubble",
-                    "size": "kilo",
-                    "hero": {
-                      "type": "image",
-                      "url": "https://i.imgur.com/MDfGTNJ.jpg",
-                      "size": "full",
-                      "aspectRatio": "20:13",
-                      "aspectMode": "cover",
-                      "action": {
-                        "type": "uri",
-                        "uri": "http://linecorp.com/"
-                      }
-                    },
-                    "body": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "九月九日忆山东兄弟",
-                          "weight": "bold",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "王维",
-                          "align": "center",
-                          "color": "#c0c0c0"
-                        },
-                        {
-                          "type": "text",
-                          "text": "独在异乡为异客，",
-                          "style": "normal",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "每逢佳节倍思亲。",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "遥知兄弟登高处，",
-                          "align": "center"
-                        },
-                        {
-                          "type": "text",
-                          "text": "遍插茱萸少一人。",
-                          "align": "center"
-                        }
-                      ],
-                      "justifyContent": "center",
-                      "spacing": "lg"
-                    }
-                  },
-                  {
-                    type: "bubble",
-                    size: "kilo",
-                    hero: {
-                      type: "image",
-                      size: "full",
-                      aspectRatio: "20:13",
-                      aspectMode: "cover",
-                      url: the_img_2013,
-                    },
-                    body: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "text",
-                          text: the_text,
-                          wrap: true,
-                          weight: "bold",
-                          size: "lg",
-                          style: "normal",
-                        },
-                        {
-                          type: "text",
-                          text: the_biz_name,
-                          size: "sm",
-                        },
-
-                        {
-                          type: "text",
-                          text: the_biz_intro,
-                          wrap: true,
-                          size: "sm",
-                        },
-
-                        {
-                          type: "button",
-                          style: "link",
-                          height: "sm",
-                          action: {
-                            type: "uri",
-                            label: the_label,
-                            uri: the_tel,
-                          },
-                        },
-                      ],
-                    },
-                    footer: {
-                      type: "box",
-                      layout: "vertical",
-                      spacing: "sm",
-                      contents: [
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Line ID",
-                            uri: the_line_id,
-                          },
-                          height: "sm",
-                        },
-
-                        {
-                          type: "button",
-                          style: "primary",
-                          action: {
-                            type: "uri",
-                            label: "Share",
-                            uri: the_share_url,
-                          },
-                          color: "#1B74E4",
-                          height: "sm",
-                          margin: "lg",
-                        },
-
-                      ],
-                    },
-                  },
-                ]
-              }
+                type: "carousel",
+                contents: flexMessages
+              };
 
               console.log('why flexJson not change 1--->', flexJson)
 
